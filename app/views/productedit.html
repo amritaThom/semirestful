@@ -1,0 +1,44 @@
+<html>
+<head>
+  <title>Friends</title>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Customer Style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<h1>Edit a product  {{id}} </h1>
+<!--<form>
+<div class="col-xs-9 col-md-4 col-lg-4">
+
+    <input type="text" class="form-control" name="name" value={{ product['name'] }}><br>
+    <input type="text" class="form-control" value="description"><br>
+    <input type="text" class="form-control" value="price"><br>
+
+  <button type="submit" class="btn btn-default">Update</button>
+</div>
+</form>-->
+{% for product in product: %}
+<div class="col-xs-9 col-md-4 col-lg-4">
+  <form action="/product/{{id}}/update" method ='POST'>
+  name:<input class="form-control" type="text" name="name" value={{ product['name'] }}><br>
+  description<input class="form-control" type="text" name="description" value={{ product['description'] }}><br>
+  price<input class="form-control" type="text" name="price" value={{ product['price'] }}><br>
+  <input type="submit" value="update">
+  </form>
+</div>
+
+{% endfor %}
+</body>
+</html>
